@@ -9,7 +9,3 @@ readme = "README.md"
 python = "^3.12"
 cd-py-math = {git = "https://github.com/RulezKT/cd_py_math.git"}
 
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
