@@ -13,7 +13,30 @@ of your calculations.
 """
 
 
-def equ_to_ecl(equ, eps):
+def find_eps(sec_from_jd2000):
+    # t = factor_t(sec_from_jd2000)
+    t = sec_from_jd2000 / 3155760000.0
+    eps = (
+        (
+            (((-0.0000000434 * t - 0.000000576) * t + 0.0020034) * t - 0.0001831) * t
+            - 46.836769
+        )
+        * t
+        + 84381.406
+    ) * 0.00000484813681109536
+
+    # checking for min and max eps
+    if eps < 0.408:
+        print(f"eps is to low = {eps}")
+        eps = 0.40875190046933224
+    if eps > 0.41:
+        print(f"eps is to high = {eps}")
+        eps = 0.4094332034810189
+    return eps
+
+
+def equ_to_ecl(sec_from_jd2000: int, equ):
+    eps = find_eps(sec_from_jd2000)
     ecl = {}
     # print(equ)
     ecl["x"] = equ["x"]
