@@ -35,7 +35,7 @@ def find_eps(sec_from_jd2000):
     return eps
 
 
-def equ_to_ecl(sec_from_jd2000: int, equ):
+def equ_to_ecl(sec_from_jd2000, equ):
     eps = find_eps(sec_from_jd2000)
     ecl = {}
     # print(equ)
